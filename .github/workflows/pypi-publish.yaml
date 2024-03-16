@@ -20,7 +20,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pipx poetry
+          pipx install poetry
           pipx inject poetry poetry-dynamic-versioning
 
       - name: Build package
