@@ -1,4 +1,5 @@
----
+# Runs pre-commit on every push or pull request.
+
 name: pre-commit
 on:
   push:

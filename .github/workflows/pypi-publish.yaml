@@ -1,0 +1,33 @@
+# This workflow will upload a Python Package using poetry when a release is created
+
+name: Publish Python package
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: |
+          pipx poetry
+          pipx inject poetry poetry-dynamic-versioning
+
+      - name: Build package
+        # Only build the source distribution, as the wheel is going to be built by piwheels.
+        run: poetry build
+
+      - name: Publish package
+        run: |
+          poetry config http-basic.pypi "__token__" "${{ secrets.PYPI_API_TOKEN }}"
+          poetry publish
