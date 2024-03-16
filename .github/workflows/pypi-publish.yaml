@@ -29,5 +29,4 @@ jobs:
 
       - name: Publish package
         run: |
-          poetry config http-basic.pypi "__token__" "${{ secrets.PYPI_API_TOKEN }}"
           poetry publish
