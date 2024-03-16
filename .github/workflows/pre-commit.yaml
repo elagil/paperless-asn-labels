@@ -1,12 +1,13 @@
 # Runs pre-commit on every push or pull request.
 
-name: pre-commit
+name: Check code with pre-commit
+
 on:
   push:
   pull_request:
 
 jobs:
-  lint:
+  pre-commit:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3

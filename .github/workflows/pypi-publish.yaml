@@ -1,18 +1,15 @@
-# This workflow will upload a Python Package using poetry when a release is created
-
-name: Publish Python package
+name: Publish Python package to pypi
 
 on:
   release:
     types: [published]
 
 jobs:
-  deploy:
-    # Specifying a GitHub environment is optional, but strongly encouraged
+  pypi-publish:
     environment: release
     permissions:
-      # IMPORTANT: this permission is mandatory for trusted publishing
       id-token: write
+
     runs-on: ubuntu-latest
 
     steps:
