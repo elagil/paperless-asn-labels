@@ -1,0 +1,54 @@
+# See https://pre-commit.com for more information.
+# See https://pre-commit.com/hooks.html for more hooks.
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      # Removes any trailing whitespaces.
+      - id: trailing-whitespace
+
+      # Ensures ends of files to be one empty line.
+      - id: end-of-file-fixer
+
+      # Tries to parse files of these types, to see if they are valid.
+      - id: check-yaml
+        args: [--unsafe]
+
+      - id: check-json
+
+      # Replaces all line endings with "lf".
+      - id: mixed-line-ending
+        args:
+          - --fix=lf
+
+  - repo: https://github.com/crate-ci/typos
+    rev: v1.19.0
+    hooks:
+      - id: typos
+        args: [] # Do not auto-fix
+
+  - repo: https://github.com/charliermarsh/ruff-pre-commit
+    rev: "v0.3.3"
+    hooks:
+      - id: ruff-format
+        args:
+          - --config=./pyproject.toml
+      - id: ruff
+        args:
+          - --config=./pyproject.toml
+
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.9.0
+    hooks:
+      # Static type checking for Python
+      - id: mypy
+        args: [--check-untyped-defs]
+        # Exclude the mars interfaces folder, since mypy detects duplicate modules for python files and their stubs.
+        additional_dependencies: []
+
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v3.15.1
+    hooks:
+      - id: pyupgrade
+        args: [--py310-plus]

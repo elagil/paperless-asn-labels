@@ -1,5 +1,5 @@
 ---
-name: Lint
+name: pre-commit
 on:
   push:
   pull_request:
@@ -9,7 +9,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: pipx install hatch
-      - run: hatch run ci:check
-        # temporary allow failures on pylint until we've fixed all issues
-      - run: hatch run ci:lint || exit 0
+      - run: pipx install pre-commit
+      - run: pre-commit run --all-files
