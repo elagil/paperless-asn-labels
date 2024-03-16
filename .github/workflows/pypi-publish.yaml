@@ -8,6 +8,11 @@ on:
 
 jobs:
   deploy:
+    # Specifying a GitHub environment is optional, but strongly encouraged
+    environment: release
+    permissions:
+      # IMPORTANT: this permission is mandatory for trusted publishing
+      id-token: write
     runs-on: ubuntu-latest
 
     steps:
@@ -18,15 +23,13 @@ jobs:
         with:
           python-version: "3.10"
 
-      - name: Install dependencies
+      - name: Install poetry
         run: |
           pipx install poetry
           pipx inject poetry poetry-dynamic-versioning
 
       - name: Build package
-        # Only build the source distribution, as the wheel is going to be built by piwheels.
         run: poetry build
 
       - name: Publish package
-        run: |
-          poetry publish
+        uses: pypa/gh-action-pypi-publish@release/v1

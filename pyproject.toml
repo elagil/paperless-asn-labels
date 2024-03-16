@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "paperless-asn-labels"
-version = "0.1.0"
+version = "0.0.0"
 description = "Creates archive serial number (ASN) label sheets"
 authors = ["Your Name <you@example.com>"]
 readme = "README.md"
@@ -15,7 +15,7 @@ click = "^8.1.7"
 paperless-asn-labels = "paperless_asn_labels.main:generate"
 
 [build-system]
-requires = ["poetry-core"]
+requires = ["poetry-core", "poetry-dynamic-versioning"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.ruff]
