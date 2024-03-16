@@ -14,3 +14,6 @@ pipx install paperless-asn-labels
 ## Usage
 
 Run `paperless-asn-labels --help` for supported commands and options.
+
+The output will contain pairs of QR codes and numbers as seen below.
+![example](example.png)
