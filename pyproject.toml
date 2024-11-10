@@ -2,7 +2,7 @@
 name = "paperless-asn-labels"
 version = "0.0.0"
 description = "Creates archive serial number (ASN) label sheets"
-authors = ["Your Name <you@example.com>"]
+authors = ["Adrian Figueroa <elagil@takanome.de>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
